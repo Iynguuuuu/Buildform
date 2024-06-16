@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { MdOutlineSubdirectoryArrowLeft, MdPeople } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa6";
@@ -17,6 +16,8 @@ const Home = () => {
     });
     const [countryInput, setCountryInput] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneCountryCode, setPhoneCountryCode] = useState('');
 
     const handleStartClick = () => {
         setShowForm(true);
@@ -48,6 +49,12 @@ const Home = () => {
             country: country
         });
         setCountryInput('');
+        handleNextStep();
+    };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        // Validate current form data if needed before proceeding
         handleNextStep();
     };
 
@@ -96,7 +103,7 @@ const Home = () => {
                                 <span className="flex flex-row text-[18px] text-[#d596ec]">1 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
                                 <span className="mt-[-4px] ml-[10px]">Before we start, what is your name?</span>
                             </p>
-                            <form className="mt-[1rem] ml-[40px]" onSubmit={e => { e.preventDefault(); handleNextStep(); }}>
+                            <form className="mt-[1rem] ml-[40px]" onSubmit={handleFormSubmit}>
                                 <div className="mb-6">
                                     <label className="block text-[#d596ec] text-[18px] mb-2" htmlFor="firstName">
                                         First name
@@ -106,6 +113,7 @@ const Home = () => {
                                         type="text"
                                         placeholder="Jane"
                                         className="appearance-none border-b-2 border-[#d596ec] w-[90%] py-2 text-[#d596ec] leading-tight focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
+                                        value={formData.firstName}
                                         onChange={handleInputChange}
                                         required
                                     />
@@ -119,6 +127,7 @@ const Home = () => {
                                         type="text"
                                         placeholder="Smith"
                                         className="appearance-none border-b-2 border-[#d596ec] w-[90%] py-2 text-[#d596ec] leading-tight focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
+                                        value={formData.lastName}
                                         onChange={handleInputChange}
                                         required
                                     />
@@ -126,7 +135,9 @@ const Home = () => {
                                 <div className="flex flex-row space-x-3 ">
                                     <div>
                                         <button
-                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            type="submit"
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                        >
                                             OK
                                         </button>
                                     </div>
@@ -143,7 +154,7 @@ const Home = () => {
                                 <span className="flex flex-row text-[18px] text-[#d596ec]">2 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
                                 <span className="mt-[-4px] ml-[10px]">What's your email address?</span>
                             </p>
-                            <form className="mt-[1rem] ml-[40px]" onSubmit={e => { e.preventDefault(); handleNextStep(); }}>
+                            <form className="mt-[1rem] ml-[40px]" onSubmit={handleFormSubmit}>
                                 <div className="mb-6">
                                     <label className="block text-gray-600 text-[18px] mb-2" htmlFor="email">
                                         This is how we'll contact you.
@@ -153,6 +164,7 @@ const Home = () => {
                                         type="email"
                                         placeholder="name@example.com"
                                         className="appearance-none border-b-2 border-[#d596ec] w-[90%] py-2 text-[#d596ec] leading-tight focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
+                                        value={formData.email}
                                         onChange={handleInputChange}
                                         required
                                     />
@@ -160,7 +172,9 @@ const Home = () => {
                                 <div className="flex flex-row space-x-3 ">
                                     <div>
                                         <button
-                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            type="submit"
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                        >
                                             OK
                                         </button>
                                     </div>
@@ -177,9 +191,8 @@ const Home = () => {
                                 <span className="flex flex-row text-[18px] text-[#d596ec]">3 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
                                 <span className="mt-[-4px] ml-[10px]">Which country are you from? 🏡🏡🏡</span>
                             </p>
-                            <form className="mt-[1rem] ml-[40px]" onSubmit={e => { e.preventDefault(); handleNextStep(); }}>
+                            <form className="mt-[1rem] ml-[40px]" onSubmit={handleFormSubmit}>
                                 <div className="mb-6 relative">
-                                    
                                     <input
                                         id="country"
                                         type="text"
@@ -205,7 +218,60 @@ const Home = () => {
                                 <div className="flex flex-row space-x-3 ">
                                     <div>
                                         <button
-                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            type="submit"
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                        >
+                                            OK
+                                        </button>
+                                    </div>
+                                    <div className="flex flex-row">
+                                        <p className="mt-[44px] text-[11px]">press <span className="font-bold">Enter</span></p>
+                                        <MdOutlineSubdirectoryArrowLeft className="text-[10px] ml-[2px] mt-[47px]" />
+                                    </div>
+                                </div>
+                            </form>
+                        </>
+                    ) : formStep === 4 ? (
+                        <>
+                            <p className="flex flex-row text-[24px] font-semibold">
+                                <span className="flex flex-row text-[18px] text-[#d596ec]">4 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
+                                <span className="mt-[-4px] ml-[10px]">What is your phone number?</span>
+                            </p>
+                            <form className="mt-[1rem] ml-[40px]" onSubmit={handleFormSubmit}>
+                                <div className="mb-6">
+                                    <label className="block text-[#d596ec] text-[18px] mb-2" htmlFor="phoneCountryCode">
+                                        Phone number country code
+                                    </label>
+                                    <input
+                                        id="phoneCountryCode"
+                                        type="text"
+                                        placeholder="+1"
+                                        className="appearance-none border-b-2 border-[#d596ec] w-[90%] py-2 text-[#d596ec] leading-tight focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
+                                        value={phoneCountryCode}
+                                        onChange={(e) => setPhoneCountryCode(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <div className="mb-6">
+                                    <label className="block text-[#d596ec] text-[18px] mb-2" htmlFor="phoneNumber">
+                                        Phone number
+                                    </label>
+                                    <input
+                                        id="phoneNumber"
+                                        type="text"
+                                        placeholder="123456789"
+                                        className="appearance-none border-b-2 border-[#d596ec] w-[90%] py-2 text-[#d596ec] leading-tight focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
+                                        value={phoneNumber}
+                                        onChange={(e) => setPhoneNumber(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <div className="flex flex-row space-x-3 ">
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                        >
                                             OK
                                         </button>
                                     </div>
