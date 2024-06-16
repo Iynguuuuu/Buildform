@@ -1,6 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { MdOutlineSubdirectoryArrowLeft, MdPeople } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa6";
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 const Home = () => {
     const [showForm, setShowForm] = useState(false);
@@ -16,8 +19,7 @@ const Home = () => {
     });
     const [countryInput, setCountryInput] = useState('');
     const [suggestions, setSuggestions] = useState([]);
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [phoneCountryCode, setPhoneCountryCode] = useState('');
+    const [phone, setPhone] = useState('');
 
     const handleStartClick = () => {
         setShowForm(true);
@@ -238,32 +240,17 @@ const Home = () => {
                                 <span className="mt-[-4px] ml-[10px]">What is your phone number?</span>
                             </p>
                             <form className="mt-[1rem] ml-[40px]" onSubmit={handleFormSubmit}>
-                                <div className="mb-6">
-                                    <label className="block text-[#d596ec] text-[18px] mb-2" htmlFor="phoneCountryCode">
-                                        Phone number country code
-                                    </label>
-                                    <input
-                                        id="phoneCountryCode"
-                                        type="text"
-                                        placeholder="+1"
-                                        className="appearance-none border-b-2 border-[#d596ec] w-[90%] py-2 text-[#d596ec] leading-tight focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
-                                        value={phoneCountryCode}
-                                        onChange={(e) => setPhoneCountryCode(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                <div className="mb-6">
-                                    <label className="block text-[#d596ec] text-[18px] mb-2" htmlFor="phoneNumber">
-                                        Phone number
-                                    </label>
-                                    <input
-                                        id="phoneNumber"
-                                        type="text"
-                                        placeholder="123456789"
-                                        className="appearance-none border-b-2 border-[#d596ec] w-[90%] py-2 text-[#d596ec] leading-tight focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
-                                        value={phoneNumber}
-                                        onChange={(e) => setPhoneNumber(e.target.value)}
-                                        required
+                                <div className="flex flex-row">
+                                    <PhoneInput
+                                        inputProps={{
+                                            id: 'phoneNumber',
+                                            name: 'phoneNumber',
+                                            required: true,
+                                            autoFocus: true,
+                                        }}
+                                        country={'us'}
+                                        value={phone}
+                                        onChange={setPhone}
                                     />
                                 </div>
                                 <div className="flex flex-row space-x-3 ">
