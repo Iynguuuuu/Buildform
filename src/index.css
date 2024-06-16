@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-placeholder::placeholder {
+    color: #d596ec;
+    font-size: 25px;
+    font-weight: 400;
+    opacity: 50%;
+}
