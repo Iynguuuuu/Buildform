@@ -221,15 +221,12 @@ const Home = () => {
                                     <div>
                                         <button
                                             type="submit"
-                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                            className="px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
                                         >
                                             OK
                                         </button>
                                     </div>
-                                    <div className="flex flex-row">
-                                        <p className="mt-[44px] text-[11px]">press <span className="font-bold">Enter</span></p>
-                                        <MdOutlineSubdirectoryArrowLeft className="text-[10px] ml-[2px] mt-[47px]" />
-                                    </div>
+                                    
                                 </div>
                             </form>
                         </>
@@ -251,6 +248,8 @@ const Home = () => {
                                         country={'us'}
                                         value={phone}
                                         onChange={setPhone}
+                                        className="appearance-none border-b-2 border-[#d596ec] w-[50%]  text-[#d596ec]  focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
+
                                     />
                                 </div>
                                 <div className="flex flex-row space-x-3 ">
