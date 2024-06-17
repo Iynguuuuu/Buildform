@@ -4,6 +4,7 @@ import { MdOutlineSubdirectoryArrowLeft, MdPeople } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa6";
 import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
@@ -35,6 +36,12 @@ const Home = () => {
 
     const handleNextStep = () => {
         setFormStep(formStep + 1);
+    };
+
+    const handlePreviousStep = () => {
+        if (formStep > 1) {
+            setFormStep(formStep - 1);
+        }
     };
 
     const handleInputChange = (e) => {
@@ -218,6 +225,26 @@ const Home = () => {
                                     </div>
                                 </div>
                             </form>
+
+                            <div className="flex flex-row space-x-1 mt-[1rem] ml-[50rem] ">
+                                <div>
+                                    <button
+                                        onClick={handlePreviousStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        < IoIosArrowUp className="text-white" />
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <button
+                                        onClick={handleNextStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        <IoIosArrowDown className="text-white" />
+                                    </button>
+                                </div>
+                            </div>
+
+
                         </>
                     ) : formStep === 2 ? (
                         <>
@@ -255,6 +282,23 @@ const Home = () => {
                                     </div>
                                 </div>
                             </form>
+                            <div className="flex flex-row space-x-1 mt-[1rem] ml-[50rem] ">
+                                <div>
+                                    <button
+                                        onClick={handlePreviousStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        < IoIosArrowUp className="text-white" />
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <button
+                                        onClick={handleNextStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        <IoIosArrowDown className="text-white" />
+                                    </button>
+                                </div>
+                            </div>
                         </>
                     ) : formStep === 3 ? (
                         <>
@@ -297,6 +341,24 @@ const Home = () => {
                                     </div>
                                 </div>
                             </form>
+
+                            <div className="flex flex-row space-x-1 mt-[1rem] ml-[50rem] ">
+                                <div>
+                                    <button
+                                        onClick={handlePreviousStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        < IoIosArrowUp className="text-white" />
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <button
+                                        onClick={handleNextStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        <IoIosArrowDown className="text-white" />
+                                    </button>
+                                </div>
+                            </div>
                         </>
                     ) : formStep === 4 ? (
                         <>
@@ -334,6 +396,23 @@ const Home = () => {
                                     </div>
                                 </div>
                             </form>
+                            <div className="flex flex-row space-x-1 mt-[1rem] ml-[50rem] ">
+                                <div>
+                                    <button
+                                        onClick={handlePreviousStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        < IoIosArrowUp className="text-white" />
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <button
+                                        onClick={handleNextStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        <IoIosArrowDown className="text-white" />
+                                    </button>
+                                </div>
+                            </div>
                         </>
                     ) : formStep === 5 ? (
                         <>
@@ -389,6 +468,23 @@ const Home = () => {
 
                                     </div>
                                 </form>
+                                <div className="flex flex-row space-x-1 mt-[-1rem] ml-[50rem] ">
+                                    <div>
+                                        <button
+                                            onClick={handlePreviousStep}
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            < IoIosArrowUp className="text-white" />
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button
+                                            onClick={handleNextStep}
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            <IoIosArrowDown className="text-white" />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
                         </>
@@ -441,6 +537,23 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </form>
+                                <div className="flex flex-row space-x-1 mt-[-1rem] ml-[50rem] ">
+                                    <div>
+                                        <button
+                                            onClick={handlePreviousStep}
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            < IoIosArrowUp className="text-white" />
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button
+                                            onClick={handleNextStep}
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            <IoIosArrowDown className="text-white" />
+                                        </button>
+                                    </div>
+                                </div>
 
                             </div>
 
@@ -506,6 +619,24 @@ const Home = () => {
                                 <div className=" mr-[-10rem] mt-[2rem]">
                                     <img width={700} height={300} src="../public/Images/salary2.jpg" alt="homeimg" />
                                 </div>
+
+                            </div>
+                            <div className="flex flex-row space-x-1 mt-[-4rem] ml-[50rem] ">
+                                <div>
+                                    <button
+                                        onClick={handlePreviousStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        < IoIosArrowUp className="text-white" />
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <button
+                                        onClick={handleNextStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        <IoIosArrowDown className="text-white" />
+                                    </button>
+                                </div>
                             </div>
 
 
@@ -564,7 +695,23 @@ const Home = () => {
                                     </div>
                                 </div>
 
+                                <div className="flex flex-row space-x-1 mt-[1rem] ml-[50rem] ">
+                                    <div>
+                                        <button
+                                            onClick={handlePreviousStep}
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            < IoIosArrowUp className="text-white" />
+                                        </button>
+                                    </div>
 
+                                    <div>
+                                        <button
+                                            onClick={handleNextStep}
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                            <IoIosArrowDown className="text-white" />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
                         </>
@@ -603,6 +750,23 @@ const Home = () => {
                                     </div>
                                 </div>
                             </form>
+                            <div className="flex flex-row space-x-1 mt-[1rem] ml-[50rem] ">
+                                <div>
+                                    <button
+                                        onClick={handlePreviousStep}
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        < IoIosArrowUp className="text-white" />
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <button
+
+                                        className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]">
+                                        <IoIosArrowDown className="text-[#e7e0e0]" />
+                                    </button>
+                                </div>
+                            </div>
                         </>
                     ) : formStep === 10 ? (
                         <>
