@@ -138,7 +138,7 @@ const Home = () => {
 
     return (
         <div className="w-[100%] mt-4 py-5 px-8">
-            <div><img src="/public/Images/logo.jpg" alt="logo" /></div>
+            <div><img src="/public/logo.jpg" alt="logo" /></div>
 
             {!showForm ? (
                 <div className="flex flex-row mt-[8rem]">
@@ -170,7 +170,7 @@ const Home = () => {
                     </div>
 
                     <div className="mt-[-10rem] ml-[6rem] items-center">
-                        <img width={800} height={500} src="/public/Images/home.jpg" alt="homeimg" />
+                        <img width={800} height={500} src="/public/home.jpg" alt="homeimg" />
                     </div>
                 </div>
             ) : (
@@ -617,7 +617,7 @@ const Home = () => {
                                 </div>
 
                                 <div className=" mr-[-10rem] mt-[2rem]">
-                                    <img width={700} height={300} src="/public/Images/salary2.jpg" alt="homeimg" />
+                                    <img width={700} height={300} src="/public/salary2.jpg" alt="homeimg" />
                                 </div>
 
                             </div>
