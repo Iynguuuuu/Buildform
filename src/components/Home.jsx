@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { MdOutlineSubdirectoryArrowLeft, MdPeople } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa6";
+import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
@@ -601,6 +603,35 @@ const Home = () => {
                                     </div>
                                 </div>
                             </form>
+                        </>
+                    ) : formStep === 10 ? (
+                        <>
+
+                            <div className="ml-[20rem]">
+                                <p className="text-4xl ml-[-4rem] font-semibold">Thank you for applying <br />
+                                    <span className="font-normal ml-[-3rem] text-xl text-gray-700">An admissions team member will contract you shortly.</span></p>
+                                <div className="flex flex-row space-x-3 ml-[3rem] mt-[2rem]">
+                                    <div className="text-[35px] text-blue-800"><FaFacebookSquare /></div>
+                                    <div className="text-[35px] text-black" ><FaSquareXTwitter /></div>
+                                    <div className="text-[35px] text-blue-500"><FaLinkedin /></div>
+                                </div>
+                                <div className="flex flex-row space-x-3 ">
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="mt-[2rem] px-4 py-2 rounded font-bold text-[24px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                        >
+                                            Create a typeform
+                                        </button>
+                                    </div>
+                                    <div className="flex flex-row">
+                                        <p className="mt-[44px] text-[11px]">press <span className="font-bold">Enter</span></p>
+                                        <MdOutlineSubdirectoryArrowLeft className="text-[10px] ml-[2px] mt-[47px]" />
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </>
                     ) : null}
                 </div>
