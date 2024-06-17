@@ -8,3 +8,9 @@
     font-weight: 400;
     opacity: 50%;
 }
+
+.custom-placeholder1::placeholder {
+    color: #d596ec;
+    font-size: 21px; 
+    font-weight: 500;
+}

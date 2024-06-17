@@ -296,12 +296,14 @@ const Home = () => {
                         </>
                     ) : formStep === 5 ? (
                         <>
-                            <p className="flex flex-row text-[24px] font-semibold">
+                        <div className="mt-[-6rem]">
+                        <p className="flex flex-row text-[24px] font-semibold">
                                 <span className="flex flex-row text-[18px] text-[#d596ec]">5 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
                                 <span className="mt-[-4px] ml-[10px]">What languages and frameworks are you familiar with?</span>
                             </p>
-                            <form className="mt-[1rem] ml-[40px]" onSubmit={handleFormSubmit}>
-                                <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">Choose technology:</h3>
+                            <p className="text-gray-600 text-[20px] ml-11">Select all the languages you know.</p>
+                            <form className="mt-[2rem] ml-[44px]" onSubmit={handleFormSubmit}>
+                                <h3 className="mb-5 text-sm font-medium text-[#d596ec]">Choose as many as you like</h3>
                                 <ul className="grid w-full gap-6 md:grid-cols-3">
                                     {["Solidity", "Rust", "Node.js", "Typescript", "JavaScript", "C", "C++", "C#", "SQL", "Python", "Assembly Language", "Haskell", "R", ".NET"].map((skill, index) => (
                                         <li key={index}>
@@ -314,7 +316,7 @@ const Home = () => {
                                             />
                                             <label
                                                 htmlFor={`${skill}-option`}
-                                                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                                className="inline-flex py-2 p-5 items-center justify-between w-full  text-[#d596ec] bg-[#deb3ee] border-[1.5px]  rounded cursor-pointer  dark:border-[#d596ec]  peer-checked:border-[3px] dark:text-[#d596ec] dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]">
                                                 <div className="block">
                                                     <div className="w-full text-lg font-semibold">{skill}</div>
                                                 </div>
@@ -328,13 +330,13 @@ const Home = () => {
                                                 placeholder="Other"
                                                 value={otherSkill}
                                                 onChange={handleOtherSkillChange}
-                                                className="w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg focus:outline-none"
+                                                className="w-full py-2 p-5  text-[#d596ec] bg-white border-2 border-gray-200 rounded focus:outline-none custom-placeholder1 border-[1.5px]  dark:border-[#d596ec]   dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]"
                                             />
                                             <button type="submit" className="hidden">Add</button>
                                         </form>
                                     </li>
                                 </ul>
-                                <div className="flex flex-row space-x-3 ">
+                                <div className="flex flex-row space-x-3 mt-[-1rem] ">
                                     <div>
                                         <button
                                             type="submit"
@@ -343,12 +345,11 @@ const Home = () => {
                                             OK
                                         </button>
                                     </div>
-                                    <div className="flex flex-row">
-                                        <p className="mt-[44px] text-[11px]">press <span className="font-bold">Enter</span></p>
-                                        <MdOutlineSubdirectoryArrowLeft className="text-[10px] ml-[2px] mt-[47px]" />
-                                    </div>
+
                                 </div>
                             </form>
+                        </div>
+                            
                         </>
                     ) : null}
                 </div>
