@@ -95,7 +95,18 @@ const Home = () => {
             if (checked) {
                 return { ...prevFormData, experience: [...prevFormData.experience, value] };
             } else {
-                return { ...prevFormData, experience: prevFormData.skills.filter((experiences) => experiences !== value) };
+                return { ...prevFormData, experience: prevFormData.experience.filter((experiences) => experiences !== value) };
+            }
+        });
+    };
+
+    const handleSalaryChange = (e) => {
+        const { value, checked } = e.target;
+        setFormData((prevFormData) => {
+            if (checked) {
+                return { ...prevFormData, salary: [...prevFormData.salary, value] };
+            } else {
+                return { ...prevFormData, salary: prevFormData.salary.filter((salarys) => salarys !== value) };
             }
         });
     };
@@ -367,7 +378,7 @@ const Home = () => {
                         <>
                             <div className="mt-[-6rem]">
                                 <p className="flex flex-row text-[24px] font-semibold">
-                                    <span className="flex flex-row text-[18px] text-[#d596ec]">5 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
+                                    <span className="flex flex-row text-[18px] text-[#d596ec]">6 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
                                     <span className="mt-[-4px] ml-[10px]">How would you describe your current level of coding <br />experience?</span>
                                 </p>
 
@@ -414,6 +425,71 @@ const Home = () => {
                                 </form>
 
                             </div>
+
+                        </>
+                    ) : formStep === 7 ? (
+                        <>
+                            <div className="flex flex-row">
+                                <div className="mt-[-6rem] ml-[-17rem]  w-[120%]">
+                                    <p className="flex flex-row text-[24px] font-semibold">
+                                        <span className="flex flex-row text-[18px] text-[#d596ec]">7 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
+                                        <span className="mt-[-4px] ml-[10px]">What is your current annual compensation ? <br />(Optional)</span>
+                                    </p>
+                                    <p className="text-gray-600  text-[20px] ml-11">Disclaimer: The information provided regarding salary will be
+                                        <br />kept confidential and <span className="font-bold">will not be</span> used as a determining factor
+                                        <br />for acceptance into the bootcamp. It will be used exclusively
+                                        <br />for career advancement guidance.</p>
+
+                                    <form className="mt-[1rem] ml-[44px]" onSubmit={handleFormSubmit}>
+                                        <ul className="grid w-1/2 gap-2 md:grid-cols-1">
+                                            {[
+                                                "<$30,000",
+                                                "$30,000 - $50,000",
+                                                "$50,000 - $80,000",
+                                                "$80,000 - $120,000",
+                                                "$120,000 - $250,000",
+                                                "$250,000 or more"
+                                            ].map((salary, index) => (
+                                                <li key={index}>
+                                                    <input
+                                                        type="radio"
+                                                        id={`${salary}-option`}
+                                                        name="salary"
+                                                        value={salary}
+                                                        className="hidden peer"
+                                                        onChange={handleSalaryChange && handleFormSubmit}
+                                                    />
+                                                    <label
+                                                        htmlFor={`${salary}-option`}
+                                                        className="inline-flex py-2 p-5 items-center justify-between w-3/4 text-[#d596ec] bg-[#deb3ee] border-[1.5px] rounded cursor-pointer dark:border-[#d596ec] peer-checked:border-[3px] dark:text-[#d596ec] dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]"
+                                                    >
+                                                        <div className="block">
+                                                            <div className="w-full text-[19px] font-semibold">{salary}</div>
+                                                        </div>
+                                                    </label>
+                                                </li>
+                                            ))}
+                                        </ul>
+
+                                        <div className="flex flex-row space-x-3 mt-[-1rem]">
+                                            <div>
+                                                <button
+                                                    type="submit"
+                                                    className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                                >
+                                                    OK
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                                <div className=" mr-[-10rem] mt-[2rem]">
+                                    <img width={700} height={300} src="../public/Images/salary2.jpg" alt="homeimg" />
+                                </div>
+                            </div>
+
 
                         </>
                     ) : null}
