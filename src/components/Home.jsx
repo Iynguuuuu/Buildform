@@ -17,7 +17,8 @@ const Home = () => {
         email: '',
         country: '',
         phoneNumber: '',
-        skills: []
+        skills: [],
+        experience: []
     });
     const [countryInput, setCountryInput] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -86,6 +87,17 @@ const Home = () => {
             }));
             setOtherSkill('');
         }
+    };
+
+    const handleExperienceChange = (e) => {
+        const { value, checked } = e.target;
+        setFormData((prevFormData) => {
+            if (checked) {
+                return { ...prevFormData, experience: [...prevFormData.experience, value] };
+            } else {
+                return { ...prevFormData, experience: prevFormData.skills.filter((experiences) => experiences !== value) };
+            }
+        });
     };
 
     return (
@@ -330,12 +342,63 @@ const Home = () => {
                                                     placeholder="Other"
                                                     value={otherSkill}
                                                     onChange={handleOtherSkillChange}
-                                                    className="w-full py-[10px] p-5  text-[#d596ec] bg-white border-2 border-gray-200 rounded focus:outline-none custom-placeholder1 border-[1.5px]  dark:border-[#d596ec]   dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]"
+                                                    className="w-full py-[10px] p-5  text-[#d596ec] bg-white border-gray-200 rounded focus:outline-none custom-placeholder1 border-[1.5px]  dark:border-[#d596ec]   dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]"
                                                 />
                                                 <button type="submit" className="hidden">Add</button>
                                             </form>
                                         </li>
                                     </ul>
+                                    <div className="flex flex-row space-x-3 mt-[-1rem] ">
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                            >
+                                                OK
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                        </>
+                    ) : formStep === 6 ? (
+                        <>
+                            <div className="mt-[-6rem]">
+                                <p className="flex flex-row text-[24px] font-semibold">
+                                    <span className="flex flex-row text-[18px] text-[#d596ec]">5 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
+                                    <span className="mt-[-4px] ml-[10px]">How would you describe your current level of coding <br />experience?</span>
+                                </p>
+
+                                <form className="mt-[2rem] ml-[44px]" onSubmit={handleFormSubmit}>
+                                    <ul className="grid w-full gap-2 md:grid-cols-1">
+                                        {[
+                                            "No experience (I have never programmed before.)",
+                                            "Beginner (I have played with some introductory coding lessons and tutorials.)",
+                                            "Intermediate (I have completed some coding classes or tutorials.)",
+                                            "Advanced (I can build applications.)",
+                                            "Professional (I am an experienced software engineer.)",].map((experience, index) => (
+                                                <li key={index}>
+                                                    <input
+                                                        type="checkbox"
+                                                        id={`${experience}-option`}
+                                                        value={experience}
+                                                        className="hidden peer"
+                                                        onChange={handleExperienceChange}
+                                                    />
+                                                    <label
+                                                        htmlFor={`${experience}-option`}
+                                                        className="inline-flex py-2 p-5 items-center justify-between w-3/4  text-[#d596ec] bg-[#deb3ee] border-[1.5px]  rounded cursor-pointer  dark:border-[#d596ec]  peer-checked:border-[3px] dark:text-[#d596ec] dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]">
+                                                        <div className="block">
+                                                            <div className="w-full text-lg font-semibold">{experience}</div>
+                                                        </div>
+                                                    </label>
+                                                </li>
+                                            ))}
+                                    </ul>
+
+
                                     <div className="flex flex-row space-x-3 mt-[-1rem] ">
                                         <div>
                                             <button
