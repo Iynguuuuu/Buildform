@@ -372,34 +372,36 @@ const Home = () => {
                                 </p>
 
                                 <form className="mt-[2rem] ml-[44px]" onSubmit={handleFormSubmit}>
-                                    <ul className="grid w-full gap-2 md:grid-cols-1">
+                                    <ul className="grid w-full gap-6 md:grid-cols-1">
                                         {[
                                             "No experience (I have never programmed before.)",
                                             "Beginner (I have played with some introductory coding lessons and tutorials.)",
                                             "Intermediate (I have completed some coding classes or tutorials.)",
                                             "Advanced (I can build applications.)",
-                                            "Professional (I am an experienced software engineer.)",].map((experience, index) => (
-                                                <li key={index}>
-                                                    <input
-                                                        type="checkbox"
-                                                        id={`${experience}-option`}
-                                                        value={experience}
-                                                        className="hidden peer"
-                                                        onChange={handleExperienceChange}
-                                                    />
-                                                    <label
-                                                        htmlFor={`${experience}-option`}
-                                                        className="inline-flex py-2 p-5 items-center justify-between w-3/4  text-[#d596ec] bg-[#deb3ee] border-[1.5px]  rounded cursor-pointer  dark:border-[#d596ec]  peer-checked:border-[3px] dark:text-[#d596ec] dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]">
-                                                        <div className="block">
-                                                            <div className="w-full text-lg font-semibold">{experience}</div>
-                                                        </div>
-                                                    </label>
-                                                </li>
-                                            ))}
+                                            "Professional (I am an experienced software engineer.)"
+                                        ].map((experience, index) => (
+                                            <li key={index}>
+                                                <input
+                                                    type="radio"
+                                                    id={`${experience}-option`}
+                                                    name="experience"
+                                                    value={experience}
+                                                    className="hidden peer"
+                                                    onChange={handleExperienceChange && handleFormSubmit}
+                                                />
+                                                <label
+                                                    htmlFor={`${experience}-option`}
+                                                    className="inline-flex py-2 p-5 items-center justify-between w-3/4 text-[#d596ec] bg-[#deb3ee] border-[1.5px] rounded cursor-pointer dark:border-[#d596ec] peer-checked:border-[3px] dark:text-[#d596ec] dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]"
+                                                >
+                                                    <div className="block">
+                                                        <div className="w-full text-lg font-semibold">{experience}</div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                        ))}
                                     </ul>
 
-
-                                    <div className="flex flex-row space-x-3 mt-[-1rem] ">
+                                    <div className="flex flex-row space-x-3 mt-[-1rem]">
                                         <div>
                                             <button
                                                 type="submit"
@@ -408,9 +410,9 @@ const Home = () => {
                                                 OK
                                             </button>
                                         </div>
-
                                     </div>
                                 </form>
+
                             </div>
 
                         </>
