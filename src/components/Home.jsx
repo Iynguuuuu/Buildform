@@ -111,6 +111,19 @@ const Home = () => {
         });
     };
 
+    const handleAcceptChange = (e) => {
+        const { value, checked } = e.target;
+        setFormData((prevFormData) => {
+            if (checked) {
+                return { ...prevFormData, accept: [...prevFormData.accept, value] };
+            } else {
+                return { ...prevFormData, accept: prevFormData.accept.filter((accept) => accept !== value) };
+            }
+        });
+    };
+
+    
+
     return (
         <div className="w-[100%] mt-4 py-5 px-8">
             <div><img src="../public/Images/logo.jpg" alt="logo" /></div>
@@ -490,6 +503,64 @@ const Home = () => {
                                 </div>
                             </div>
 
+
+                        </>
+                    ) : formStep === 8 ? (
+                        <>
+                            <div className="mt-[-6rem]">
+                                <p className="flex flex-row text-[24px] font-semibold">
+                                    <span className="flex flex-row text-[18px] text-[#d596ec]">8 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
+                                    <span className="mt-[-4px] ml-[10px]">Certifying Statement*</span>
+                                </p>
+                                <p className="text-gray-600 text-[20px] ml-11">
+                                    I hereby acknowledge that this application form was completed by me
+                                    <br />(the individual seeking to enroll in Metana) and I did not receive help
+                                    <br /> from any external sources. The responses submitted are entirely my own
+                                    <br /> and based on my own reasoning. Also, I opt in to receive communication
+                                    <br /> messages from Metana about my application.
+                                </p>
+
+                                <form className="mt-[2rem] ml-[44px]" onSubmit={handleFormSubmit}>
+                                    <ul className="grid w-full gap-6 md:grid-cols-1">
+                                        {[
+                                            "I accept",
+                                            "I don't accept",
+                                        ].map((accept, index) => (
+                                            <li key={index}>
+                                                <input
+                                                    type="radio"
+                                                    id={`${accept}-option`}
+                                                    name="accept"
+                                                    value={accept}
+                                                    className="hidden peer"
+                                                    onChange={handleAcceptChange && handleFormSubmit}
+                                                />
+                                                <label
+                                                    htmlFor={`${accept}-option`}
+                                                    className="inline-flex py-2 p-5 items-center justify-between w-1/4 text-[#d596ec] bg-[#deb3ee] border-[1.5px] rounded cursor-pointer dark:border-[#d596ec] peer-checked:border-[3px] dark:text-[#d596ec] dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]"
+                                                >
+                                                    <div className="block">
+                                                        <div className="w-full text-lg font-semibold">{accept}</div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                </form>
+                                <div className="flex flex-row space-x-3 ml-[45px] mt-[-1rem]">
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                        >
+                                            OK
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
 
                         </>
                     ) : null}
