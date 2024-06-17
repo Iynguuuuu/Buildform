@@ -18,7 +18,9 @@ const Home = () => {
         country: '',
         phoneNumber: '',
         skills: [],
-        experience: []
+        experience: '',
+        salary: '',
+        linkedIn: ''
     });
     const [countryInput, setCountryInput] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -111,6 +113,7 @@ const Home = () => {
         });
     };
 
+
     const handleAcceptChange = (e) => {
         const { value, checked } = e.target;
         setFormData((prevFormData) => {
@@ -122,7 +125,7 @@ const Home = () => {
         });
     };
 
-    
+
 
     return (
         <div className="w-[100%] mt-4 py-5 px-8">
@@ -562,6 +565,42 @@ const Home = () => {
 
                             </div>
 
+                        </>
+                    ) : formStep === 9 ? (
+                        <>
+                            <p className="flex flex-row text-[24px] font-semibold">
+                                <span className="flex flex-row text-[18px] text-[#d596ec]">9 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
+                                <span className="mt-[-4px] ml-[10px]">LinkedIn URL (optional)</span>
+                            </p>
+                            <p className="text-gray-600  text-[20px] ml-11">
+                                Here's a sniper link to make your life easy - linkedin.com (It'll open in <br /> a new tab) 🚀   </p>
+                            <form className="mt-[1rem] ml-[40px]" onSubmit={handleFormSubmit}>
+                                <div className="mb-6">
+                                    <input
+                                        id="linkedIn"
+                                        type="text"
+                                        placeholder="Type your answer here..."
+                                        className="appearance-none border-b-2 border-[#d596ec] w-[90%] py-2 text-[#d596ec] leading-tight focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
+                                        value={formData.linkedIn}
+                                        onChange={handleInputChange}
+
+                                    />
+                                </div>
+                                <div className="flex flex-row space-x-3 mt-[-2rem] ">
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                        >
+                                            Submit
+                                        </button>
+                                    </div>
+                                    <div className="flex flex-row">
+                                        <p className="mt-[44px] text-[11px]">press <span className="font-bold">Ctrl + Enter</span></p>
+                                        <MdOutlineSubdirectoryArrowLeft className="text-[10px] ml-[2px] mt-[47px]" />
+                                    </div>
+                                </div>
+                            </form>
                         </>
                     ) : null}
                 </div>
