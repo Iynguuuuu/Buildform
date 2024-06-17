@@ -296,60 +296,60 @@ const Home = () => {
                         </>
                     ) : formStep === 5 ? (
                         <>
-                        <div className="mt-[-6rem]">
-                        <p className="flex flex-row text-[24px] font-semibold">
-                                <span className="flex flex-row text-[18px] text-[#d596ec]">5 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
-                                <span className="mt-[-4px] ml-[10px]">What languages and frameworks are you familiar with?</span>
-                            </p>
-                            <p className="text-gray-600 text-[20px] ml-11">Select all the languages you know.</p>
-                            <form className="mt-[2rem] ml-[44px]" onSubmit={handleFormSubmit}>
-                                <h3 className="mb-5 text-sm font-medium text-[#d596ec]">Choose as many as you like</h3>
-                                <ul className="grid w-full gap-6 md:grid-cols-3">
-                                    {["Solidity", "Rust", "Node.js", "Typescript", "JavaScript", "C", "C++", "C#", "SQL", "Python", "Assembly Language", "Haskell", "R", ".NET"].map((skill, index) => (
-                                        <li key={index}>
-                                            <input
-                                                type="checkbox"
-                                                id={`${skill}-option`}
-                                                value={skill}
-                                                className="hidden peer"
-                                                onChange={handleSkillChange}
-                                            />
-                                            <label
-                                                htmlFor={`${skill}-option`}
-                                                className="inline-flex py-2 p-5 items-center justify-between w-full  text-[#d596ec] bg-[#deb3ee] border-[1.5px]  rounded cursor-pointer  dark:border-[#d596ec]  peer-checked:border-[3px] dark:text-[#d596ec] dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]">
-                                                <div className="block">
-                                                    <div className="w-full text-lg font-semibold">{skill}</div>
-                                                </div>
-                                            </label>
+                            <div className="mt-[-6rem]">
+                                <p className="flex flex-row text-[24px] font-semibold">
+                                    <span className="flex flex-row text-[18px] text-[#d596ec]">5 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
+                                    <span className="mt-[-4px] ml-[10px]">What languages and frameworks are you familiar with?</span>
+                                </p>
+                                <p className="text-gray-600 text-[20px] ml-11">Select all the languages you know.</p>
+                                <form className="mt-[2rem] ml-[44px]" onSubmit={handleFormSubmit}>
+                                    <h3 className="mb-5 text-sm font-medium text-[#d596ec]">Choose as many as you like</h3>
+                                    <ul className="grid w-full gap-6 md:grid-cols-3">
+                                        {["Solidity", "Rust", "Node.js", "Typescript", "JavaScript", "C", "C++", "C#", "SQL", "Python", "Assembly Language", "Haskell", "R", ".NET"].map((skill, index) => (
+                                            <li key={index}>
+                                                <input
+                                                    type="checkbox"
+                                                    id={`${skill}-option`}
+                                                    value={skill}
+                                                    className="hidden peer"
+                                                    onChange={handleSkillChange}
+                                                />
+                                                <label
+                                                    htmlFor={`${skill}-option`}
+                                                    className="inline-flex py-2 p-5 items-center justify-between w-full  text-[#d596ec] bg-[#deb3ee] border-[1.5px]  rounded cursor-pointer  dark:border-[#d596ec]  peer-checked:border-[3px] dark:text-[#d596ec] dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]">
+                                                    <div className="block">
+                                                        <div className="w-full text-lg font-semibold">{skill}</div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                        ))}
+                                        <li>
+                                            <form onSubmit={handleOtherSkillSubmit}>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Other"
+                                                    value={otherSkill}
+                                                    onChange={handleOtherSkillChange}
+                                                    className="w-full py-[10px] p-5  text-[#d596ec] bg-white border-2 border-gray-200 rounded focus:outline-none custom-placeholder1 border-[1.5px]  dark:border-[#d596ec]   dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]"
+                                                />
+                                                <button type="submit" className="hidden">Add</button>
+                                            </form>
                                         </li>
-                                    ))}
-                                    <li>
-                                        <form onSubmit={handleOtherSkillSubmit}>
-                                            <input
-                                                type="text"
-                                                placeholder="Other"
-                                                value={otherSkill}
-                                                onChange={handleOtherSkillChange}
-                                                className="w-full py-2 p-5  text-[#d596ec] bg-white border-2 border-gray-200 rounded focus:outline-none custom-placeholder1 border-[1.5px]  dark:border-[#d596ec]   dark:bg-[#ede6f4] dark:hover:bg-[#e0cfe6]"
-                                            />
-                                            <button type="submit" className="hidden">Add</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                                <div className="flex flex-row space-x-3 mt-[-1rem] ">
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
-                                        >
-                                            OK
-                                        </button>
-                                    </div>
+                                    </ul>
+                                    <div className="flex flex-row space-x-3 mt-[-1rem] ">
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                            >
+                                                OK
+                                            </button>
+                                        </div>
 
-                                </div>
-                            </form>
-                        </div>
-                            
+                                    </div>
+                                </form>
+                            </div>
+
                         </>
                     ) : null}
                 </div>
