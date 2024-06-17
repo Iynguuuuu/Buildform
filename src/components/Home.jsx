@@ -15,11 +15,14 @@ const Home = () => {
         firstName: '',
         lastName: '',
         email: '',
-        country: ''
+        country: '',
+        phoneNumber: '',
+        skills: []
     });
     const [countryInput, setCountryInput] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [phone, setPhone] = useState('');
+    const [otherSkill, setOtherSkill] = useState('');
 
     const handleStartClick = () => {
         setShowForm(true);
@@ -56,8 +59,33 @@ const Home = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        // Validate current form data if needed before proceeding
         handleNextStep();
+    };
+
+    const handleSkillChange = (e) => {
+        const { value, checked } = e.target;
+        setFormData((prevFormData) => {
+            if (checked) {
+                return { ...prevFormData, skills: [...prevFormData.skills, value] };
+            } else {
+                return { ...prevFormData, skills: prevFormData.skills.filter((skill) => skill !== value) };
+            }
+        });
+    };
+
+    const handleOtherSkillChange = (e) => {
+        setOtherSkill(e.target.value);
+    };
+
+    const handleOtherSkillSubmit = (e) => {
+        e.preventDefault();
+        if (otherSkill.trim() !== '') {
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                skills: [...prevFormData.skills, otherSkill.trim()]
+            }));
+            setOtherSkill('');
+        }
     };
 
     return (
@@ -181,7 +209,7 @@ const Home = () => {
                                         </button>
                                     </div>
                                     <div className="flex flex-row">
-                                        <p className="mt-[44px] text-[11px]">press <span className="font-bold">Enter</span></p>
+                                        <p className="mt-[44px] text-[11px">press <span className="font-bold">Enter</span></p>
                                         <MdOutlineSubdirectoryArrowLeft className="text-[10px] ml-[2px] mt-[47px]" />
                                     </div>
                                 </div>
@@ -226,7 +254,6 @@ const Home = () => {
                                             OK
                                         </button>
                                     </div>
-                                    
                                 </div>
                             </form>
                         </>
@@ -247,11 +274,66 @@ const Home = () => {
                                         }}
                                         country={'us'}
                                         value={phone}
-                                        onChange={setPhone}
+                                        onChange={(phone) => setFormData({ ...formData, phoneNumber: phone })}
                                         className="appearance-none border-b-2 border-[#d596ec] w-[50%]  text-[#d596ec]  focus:outline-none focus:border-[#aa56c9] custom-placeholder text-[25px] font-semibold"
-
                                     />
                                 </div>
+                                <div className="flex flex-row space-x-3 ">
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="mt-[2rem] px-4 py-1 rounded font-bold text-[22px] text-white bg-[#d596ec] hover:bg-[#daa7ed]"
+                                        >
+                                            OK
+                                        </button>
+                                    </div>
+                                    <div className="flex flex-row">
+                                        <p className="mt-[44px] text-[11px]">press <span className="font-bold">Enter</span></p>
+                                        <MdOutlineSubdirectoryArrowLeft className="text-[10px] ml-[2px] mt-[47px]" />
+                                    </div>
+                                </div>
+                            </form>
+                        </>
+                    ) : formStep === 5 ? (
+                        <>
+                            <p className="flex flex-row text-[24px] font-semibold">
+                                <span className="flex flex-row text-[18px] text-[#d596ec]">5 <FaArrowRight className="mt-[6px] ml-[5px]" /></span>
+                                <span className="mt-[-4px] ml-[10px]">What languages and frameworks are you familiar with?</span>
+                            </p>
+                            <form className="mt-[1rem] ml-[40px]" onSubmit={handleFormSubmit}>
+                                <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">Choose technology:</h3>
+                                <ul className="grid w-full gap-6 md:grid-cols-3">
+                                    {["Solidity", "Rust", "Node.js", "Typescript", "JavaScript", "C", "C++", "C#", "SQL", "Python", "Assembly Language", "Haskell", "R", ".NET"].map((skill, index) => (
+                                        <li key={index}>
+                                            <input
+                                                type="checkbox"
+                                                id={`${skill}-option`}
+                                                value={skill}
+                                                className="hidden peer"
+                                                onChange={handleSkillChange}
+                                            />
+                                            <label
+                                                htmlFor={`${skill}-option`}
+                                                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                                <div className="block">
+                                                    <div className="w-full text-lg font-semibold">{skill}</div>
+                                                </div>
+                                            </label>
+                                        </li>
+                                    ))}
+                                    <li>
+                                        <form onSubmit={handleOtherSkillSubmit}>
+                                            <input
+                                                type="text"
+                                                placeholder="Other"
+                                                value={otherSkill}
+                                                onChange={handleOtherSkillChange}
+                                                className="w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg focus:outline-none"
+                                            />
+                                            <button type="submit" className="hidden">Add</button>
+                                        </form>
+                                    </li>
+                                </ul>
                                 <div className="flex flex-row space-x-3 ">
                                     <div>
                                         <button
